@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from .models import Refugio
+from .serializers import RefugioSerializer
+
+
+class RefugioViewSet(ModelViewSet):
+    queryset = Refugio.objects.all().order_by('id')
+    serializer_class = RefugioSerializer
