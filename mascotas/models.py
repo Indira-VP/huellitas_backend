@@ -20,6 +20,13 @@ class Mascota(models.Model):
     edad = models.CharField(max_length=50, blank=True)
     estado = models.CharField(max_length=20, choices=ESTADOS, default='Disponible')
     descripcion = models.TextField(blank=True)
+    refugio = models.ForeignKey(
+        'refugios.Refugio',
+        on_delete=models.PROTECT,
+        related_name='mascotas',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.nombre
